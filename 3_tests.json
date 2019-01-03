@@ -1,0 +1,96 @@
+{
+	"type": "compliance_failure",
+	"total_number_of_tests": 57,
+	"total_number_of_skipped_tests": 3,
+	"total_number_of_passed_tests": 51,
+	"total_number_of_failed_tests": 3,
+	"number_of_failed_critical_tests": 3,
+	"number_of_critical_tests": 54,
+	"node_uuid": "d05425ae11f2467c9d9bc9e80e476f98",
+	"node_name": "aws-centos7-production",
+	"inspec_version": "3.2.6",
+	"failure_snippet": "InSpec found a critical control failure on [aws-centos7-production](https://a2.jsnow.chef-demo.com/compliance/reporting/nodes/d05425ae11f2467c9d9bc9e80e476f98)",
+	"failed_critical_profiles": [{
+		"version": "0.1.0",
+		"title": "Linux Baseline",
+		"supports": [],
+		"summary": "John's Webhook Testing Linux Baseline",
+		"sha256": "e96ea4d8bd1bd5ae7d597c0a17892ea16fdfe91fd9401bc495bbaeefd3b7d6d5",
+		"number_of_controls": 57,
+		"name": "test_web_linux_baseline",
+		"maintainer": "CCP Team",
+		"license": "Apache-2.0",
+		"copyright_email": "you@example.com",
+		"copyright": "CCP Team",
+		"controls": [{
+			"title": "test control 3 for webhook",
+			"status": "failed",
+			"source_location": {
+				"ref": "/hab/pkgs/thelunaticscripter/test_web_linux_baseline/0.1.0/20181227154933/dist/controls/linux.rb",
+				"line": 35
+			},
+			"results": [{
+				"status": "failed",
+				"start_time": "2018-12-27T15:51:27+00:00",
+				"skip_message": "",
+				"run_time": 1.7547000607009977e-4,
+				"message": "expected File /tmp/jsnow3 to exist",
+				"code_desc": "File /tmp/jsnow3 should exist"
+			}],
+			"refs": [],
+			"number_of_tests": 1,
+			"number_of_failed_tests": 1,
+			"impact": 1.0,
+			"id": "jsnow-3",
+			"desc": "don't care",
+			"code": "control 'jsnow-3' do\n  impact 1.0\n  title 'test control 3 for webhook'\n  desc \"don't care\"\n  describe file('/tmp/jsnow3') do\n    it { should exist }\n  end\nend\n"
+		}, {
+			"title": "test control 2 for webhook",
+			"status": "failed",
+			"source_location": {
+				"ref": "/hab/pkgs/thelunaticscripter/test_web_linux_baseline/0.1.0/20181227154933/dist/controls/linux.rb",
+				"line": 25
+			},
+			"results": [{
+				"status": "failed",
+				"start_time": "2018-12-27T15:51:27+00:00",
+				"skip_message": "",
+				"run_time": 0.002485011937096715,
+				"message": "undefined method `tags' for #<#<Class:0x00000000025f3ed8>:0x0000000002356770>",
+				"code_desc": "Control Source Code Error /hab/pkgs/thelunaticscripter/test_web_linux_baseline/0.1.0/20181227154933/dist/controls/linux.rb:25 "
+			}],
+			"refs": [],
+			"number_of_tests": 1,
+			"number_of_failed_tests": 1,
+			"impact": 1.0,
+			"id": "jsnow-2",
+			"desc": "don't care",
+			"code": "control 'jsnow-2' do\n  impact 1.0\n  title 'test control 2 for webhook'\n  desc \"don't care\"\n  tags \"tag_example_1\"\n  describe file('/tmp/jsnow2') do\n    it { should exist }\n  end\nend\n"
+		}, {
+			"title": "test control 1 for webhook",
+			"status": "failed",
+			"source_location": {
+				"ref": "/hab/pkgs/thelunaticscripter/test_web_linux_baseline/0.1.0/20181227154933/dist/controls/linux.rb",
+				"line": 16
+			},
+			"results": [{
+				"status": "failed",
+				"start_time": "2018-12-27T15:51:27+00:00",
+				"skip_message": "",
+				"run_time": 0.010774023830890656,
+				"message": "expected File /tmp/jsnow1 to exist",
+				"code_desc": "File /tmp/jsnow1 should exist"
+			}],
+			"refs": [],
+			"number_of_tests": 1,
+			"number_of_failed_tests": 1,
+			"impact": 1.0,
+			"id": "jsnow-1",
+			"desc": "don't care",
+			"code": "control 'jsnow-1' do\n  impact 1.0\n  title 'test control 1 for webhook'\n  desc \"don't care\"\n  describe file('/tmp/jsnow1') do\n   it { should exist }\n  end\nend\n"
+		}],
+		"attributes": []
+	}],
+	"automate_fqdn": "a2.jsnow.chef-demo.com",
+	"automate_failure_url": "https://a2.jsnow.chef-demo.com/compliance/reporting/nodes/d05425ae11f2467c9d9bc9e80e476f98"
+}
