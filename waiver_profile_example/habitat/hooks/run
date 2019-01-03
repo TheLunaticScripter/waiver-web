@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# redirect stderr to stdout
+# ultimately, we'd like to log this somewhere useful, but due to
+# https://github.com/habitat-sh/habitat/issues/2395, we need to
+# avoid doing that for now.
+exec 2>&1
+
+# InSpec will try to create a .cache directory in the user's home directory
+# so this needs to be someplace writeable by the hab user
+export HOME={{pkg.svc_var_path}}
+
+PROFILE_IDENT="{{pkg.origin}}/{{pkg.name}}"
+
+while true; do
+  echo "Executing InSpec for ${PROFILE_IDENT}"
+  inspec exec {{pkg.path}}/dist --json-config {{pkg.svc_config_path}}/inspec.json --no-distinct-exit --target-id {{sys.member_id}}
+
+  if [ $? -eq 0 ]; then
+    echo "InSpec run completed successfully."
+  else
+    echo "InSpec run did not complete successfully. If you do not see any errors above,"
+    echo "control failures were detected. Check the InSpec results here for details:"
+    echo "Otherwise, troubleshoot any errors shown above."
+  fi
+
+  source {{pkg.svc_config_path}}/settings.sh
+  echo "sleeping for ${SLEEP_TIME} seconds"
+  sleep ${SLEEP_TIME}
+done
