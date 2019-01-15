@@ -26,6 +26,7 @@ class WaiverProfile
     ).each do |dir|
       FileUtils.mkdir_p("#{@profile_path}/#{dir}") unless Dir.exists?("#{@profile_path}/#{dir}")
     end
+    puts "Creating habitat plan for #{@profile_name}..."
     habitat_plan = ERB.new(File.read("#{@template_path}/habitat/plan.sh.erb"))
     plan_path = "#{@profile_path}/habitat/plan.sh"
     FileUtils.remove_file(plan_path) if File.exists?(plan_path) 
@@ -40,7 +41,12 @@ class WaiverProfile
     ).each do |file|
       FileUtils.copy_file("#{@template_path}#{file}", "#{@profile_path}#{file}") unless File.exists?("#{@profile_path}#{file}")
     end
-    
+    test_file = ERB.new(File.read("#{@template_path}/controls/tests.rb.erb"))
+    test_path = "#{@profile_path}/controls/tests.rb.erb"
+    FileUtils.remove_file(test_path) if File.exists?(test_path)
+    File.open(test_path, 'w+') do |t|
+      t.write test_file.result(binding)
+    end
   end
 
   def update_profile
