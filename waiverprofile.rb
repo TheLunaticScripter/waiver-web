@@ -4,13 +4,21 @@ require 'erb'
 
 class WaiverProfile
   def initialize(failed_profile, profile_path, profile_name, profile_version, source_profile, hab_origin, template_path, controls)
+    # Profile that failed the compliance check from Automate
     @failed_profile = failed_profile
+    # Path to create the new wavied profile
     @profile_path = profile_path
+    # Name of the new Waiver Profile
     @profile_name = profile_name
+    # Version of the new Waiver Profile
     @profile_version = profile_version
+    # Name of the failed compliance profile from Automate
     @source_profile = source_profile
+    # Habitat Origin for waiver profile
     @hab_origin = hab_origin
+    # Path to habitat profile template
     @template_path = template_path
+    # Array of controls to be skipped from failed profile
     @controls = controls
   end
 
