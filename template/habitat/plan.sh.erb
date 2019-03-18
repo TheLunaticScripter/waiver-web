@@ -1,7 +1,7 @@
 pkg_name=<%= @profile_name %>
 pkg_version=<%= @profile_version %>
 pkg_origin=<%= @hab_origin %>
-pkg_build_deb=(chef/inspec <%= @source_profile%>)
+pkg_build_deb=(chef/inspec <%= @source_profile %>)
 pkg_deps=(chef/inspec core/ruby core/hab <%= @source_profile %>)
 pkg_svc_user=root
 pkg_license='Apache-2.0'
